@@ -17,6 +17,7 @@ dotenv.config();
 
 const api_key = process.env.API_KEY;
 const api_url = process.env.API_URL;
+
 // NaturalLanguageUnderstanding instance 
 function getNLUInstance() {
     /*Type the code to create the NLU instance and return it.
@@ -28,9 +29,9 @@ function getNLUInstance() {
     const naturalLanguageUnderstanding = new NaturalLanguageUnderstandingV1({
         version: '2021-08-01',
         authenticator: new IamAuthenticator({
-            apikey: apikey,
+            apikey: api_key,
         }),
-        serviceUrl: url,
+        serviceUrl: api_url,
     });
 
     return naturalLanguageUnderstanding;
