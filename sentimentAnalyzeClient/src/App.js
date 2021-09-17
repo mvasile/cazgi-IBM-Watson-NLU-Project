@@ -4,17 +4,27 @@ import EmotionTable from './EmotionTable.js';
 import React from 'react';
 
 class App extends React.Component {
+
   /*
   We are setting the component as a state named innercomp.
   When this state is accessed, the HTML that is set as the 
   value of the state, will be returned. The initial input mode
   is set to text
   */
-  state = {innercomp:<textarea rows="4" cols="50" id="textinput"/>,
-            mode: "text",
-          sentimentOutput:[],
-          sentiment:true
-        }
+  state = {
+    innercomp:<textarea rows="4" cols="50" id="textinput"/>,
+    mode: "text",
+    sentimentOutput:[],
+    sentiment:true,
+    
+    students: [
+        { id: 1, name: 'Wasif', age: 21, email: 'wasif@email.com' },
+        { id: 2, name: 'Ali', age: 19, email: 'ali@email.com' },
+        { id: 3, name: 'Saad', age: 16, email: 'saad@email.com' },
+        { id: 4, name: 'Asad', age: 25, email: 'asad@email.com' }
+    ]
+      
+  }
   
   /*
   This method returns the component based on what the input mode is.
@@ -30,11 +40,11 @@ class App extends React.Component {
       mode = "text"
       rows = 4
     }
-      this.setState({innercomp:<textarea rows={rows} cols="50" id="textinput"/>,
-      mode: mode,
-      sentimentOutput:[],
-      sentiment:true
-      });
+    this.setState({innercomp:<textarea rows={rows} cols="50" id="textinput"/>,
+    mode: mode,
+    sentimentOutput:[],
+    sentiment:true
+    });
   } 
   
   sendForSentimentAnalysis = () => {
@@ -49,9 +59,9 @@ class App extends React.Component {
         let output = data.label;
         let color = "white"
         switch(output) {
-          case "positive": color = "black";break;
-          case "negative": color = "black";break;
-          default: color = "black";
+          case "positive": color = "green";break;
+          case "negative": color = "red";break;
+          default: color = "yellow";
         }
         output = <div style={{color:color,fontSize:20}}>{output}</div>
         this.setState({sentimentOutput:output});
